@@ -15,8 +15,14 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# plugins dizinini oluştur
+RUN mkdir -p /minecraft/plugins
+
 # server.properties dosyasını kopyala
 COPY games/minecraft/server.properties ./server.properties
+
+# EssentialsX eklentisini indir
+RUN curl -o /minecraft/plugins/EssentialsX.jar -L https://github.com/EssentialsX/Essentials/releases/download/2.20.1/EssentialsX-2.20.1.jar
 
 # Yedekleme dizinini oluştur
 RUN mkdir -p ${BACKUP_DIR}

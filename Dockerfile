@@ -1,6 +1,9 @@
 # Temel imaj olarak openjdk kullan
 FROM openjdk:21-jdk-slim
 
+# Yedekleme dizini için ARG tanımla
+ARG BACKUP_DIR
+
 # Çalışma dizinini ayarla
 WORKDIR /minecraft
 
@@ -16,13 +19,13 @@ RUN apt-get update && \
 COPY games/minecraft/server.properties ./server.properties
 
 # Yedekleme dizinini oluştur
-RUN mkdir /games/minecraft/backup
+RUN mkdir -p ${BACKUP_DIR}
 
 # Yedekleme scriptini kopyala
-COPY games/minecraft/backup.sh /backup.sh
+COPY games/minecraft/backup.sh ${BACKUP_DIR}/backup.sh
 
 # Scriptin çalıştırılabilir olmasını sağla
-RUN chmod +x /backup.sh
+RUN chmod +x ${BACKUP_DIR}/backup.sh
 
 # Sunucuyu başlatma komutu
-CMD ["sh", "-c", "/backup.sh & java -Xmx1024M -Xms1024M -jar minecraft_server.jar nogui"]
+CMD ["sh", "-c", "${BACKUP_DIR}/backup.sh & java -Xmx1024M -Xms1024M -jar minecraft_server.jar nogui"]

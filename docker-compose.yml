@@ -11,6 +11,8 @@ services:
       - BACKUP_DIR=/backup
     volumes:
       - minecraft_data:/minecraft
+      - minecraft_backup_data:/backup
 
 volumes:
   minecraft_data:
+  minecraft_backup_data:

@@ -1,9 +1,14 @@
 services:
   minecraft-server:
-    build: .
+    build:
+      context: .
+      args:
+        BACKUP_DIR: /backup
     ports:
       - "25565:25565"
     restart: always
+    environment:
+      - BACKUP_DIR=/backup
     volumes:
       - minecraft_data:/minecraft
 

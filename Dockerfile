@@ -22,7 +22,9 @@ RUN mkdir -p /minecraft/plugins
 COPY games/minecraft/server.properties ./server.properties
 
 # EssentialsX eklentisini indir
-RUN curl -o /minecraft/plugins/EssentialsX.jar -L https://github.com/EssentialsX/Essentials/releases/download/2.20.1/EssentialsX-2.20.1.jar
+RUN if [ ! -f /minecraft/plugins/EssentialsX.jar ]; then \
+      curl -o /minecraft/plugins/EssentialsX.jar -L https://github.com/EssentialsX/Essentials/releases/download/2.20.1/EssentialsX-2.20.1.jar; \
+    fi
 
 # Yedekleme dizinini oluştur
 RUN mkdir -p ${BACKUP_DIR}

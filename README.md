@@ -1,6 +1,6 @@
-# Minecraft Sunucusu
+# Oyun Sunucusu
 
-Bu depo, Minecraft sunucusunu Docker kullanarak çalıştırmak için gereken dosyaları içerir.
+Bu depo, Minecraft gibi sunucuları  Docker kullanarak çalıştırmak için gereken dosyaları içerir.
 
 ## Kullanım
 

@@ -19,7 +19,7 @@ COPY games/minecraft/server.properties ./server.properties
 RUN mkdir /games/minecraft/backup
 
 # Yedekleme scriptini kopyala
-COPY backup.sh /backup.sh
+COPY games/minecraft/backup.sh /backup.sh
 
 # Scriptin çalıştırılabilir olmasını sağla
 RUN chmod +x /backup.sh

@@ -11,7 +11,7 @@ services:
       MAX_PLAYERS: 20
     volumes:
       - minecraft_data:/data
-      - ./server.properties:/data/server.properties
+      - ./games/minecraft/server.properties:/data/server.properties
     restart: always
 
 volumes:

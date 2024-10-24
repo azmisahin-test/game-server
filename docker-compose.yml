@@ -1,18 +1,6 @@
-version: '3.8'
-
 services:
   minecraft-server:
     build: .
     ports:
       - "25565:25565"
-    environment:
-      EULA: "TRUE"
-      VERSION: "latest"
-      MAX_PLAYERS: 20
-    volumes:
-      - minecraft_data:/data
-      - ./games/minecraft/server.properties:/data/server.properties
     restart: always
-
-volumes:
-  minecraft_data:

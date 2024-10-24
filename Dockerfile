@@ -15,5 +15,14 @@ RUN apt-get update && \
 # server.properties dosyasını kopyala
 COPY games/minecraft/server.properties ./server.properties
 
+# Yedekleme dizinini oluştur
+RUN mkdir /games/minecraft/backup
+
+# Yedekleme scriptini kopyala
+COPY backup.sh /backup.sh
+
+# Scriptin çalıştırılabilir olmasını sağla
+RUN chmod +x /backup.sh
+
 # Sunucuyu başlatma komutu
-CMD ["java", "-Xmx1024M", "-Xms1024M", "-jar", "minecraft_server.jar", "nogui"]
+CMD ["sh", "-c", "/backup.sh & java -Xmx1024M -Xms1024M -jar minecraft_server.jar nogui"]

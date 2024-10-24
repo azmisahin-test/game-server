@@ -4,3 +4,8 @@ services:
     ports:
       - "25565:25565"
     restart: always
+    volumes:
+      - minecraft_data:/minecraft
+
+volumes:
+  minecraft_data:

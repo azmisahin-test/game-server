@@ -1,14 +1,14 @@
 # Temel imaj olarak openjdk kullan
-FROM openjdk:17-jdk
+FROM openjdk:21-jdk-slim
 
 # Çalışma dizinini ayarla
 WORKDIR /minecraft
 
-# Sunucu dosyalarını indirme
+# Sunucu dosyasını indirme
 RUN apt-get update && \
-    apt-get install -y wget && \
-    wget https://launcher.mojang.com/v1/objects/0f9bba1b8676d7a4d92d6eeb3ff6b63f0f2e9a88/server.jar && \
+    apt-get install -y curl && \
+    curl -o minecraft_server.jar https://piston-data.mojang.com/v1/objects/45810d238246d90e811d896f87b14695b7fb6839/server.jar && \
     echo "eula=true" > eula.txt
 
 # Sunucuyu başlatma komutu
-CMD ["java", "-Xmx2G", "-Xms1G", "-jar", "server.jar", "nogui"]
+CMD ["java", "-Xmx1024M", "-Xms1024M", "-jar", "minecraft_server.jar", "nogui"]

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Yedekleme dizini
-BACKUP_DIR="/games/minecraft/backup"
+BACKUP_DIR=${BACKUP_DIR}
 TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
 
 # Yedekleme oluştur
